@@ -53,6 +53,9 @@ chosen_bg = 0
 
 not_play = True
 dashboard = False
+lvl_one = False
+lvl_two = False
+lvl_three = False
 create_map = False
 
 button_play = Dashboard("playbutton.png", 40, 40)
@@ -104,6 +107,25 @@ for i in range(len(img_list)):
 # -------- Main Program Loop -----------
 while run:
 
+    while not(not_play):
+        if keys[pygame.K_RIGHT]:
+            p_one.move_direction("right")
+        elif keys[pygame.K_LEFT]:
+            p_one.move_direction("left")
+        elif keys[pygame.K_UP]:
+            p_one.move_direction("up")
+        elif keys[pygame.K_DOWN]:
+            p_one.move_direction("down")
+
+        if keys[pygame.K_d]:
+            p_two.move_direction("right")
+        elif keys[pygame.K_a]:
+            p_two.move_direction("left")
+        elif keys[pygame.K_w]:
+            p_two.move_direction("up")
+        elif keys[pygame.K_s]:
+            p_two.move_direction("down")
+
     # --- Main event loop
     ## ----- NO BLIT ZONE START ----- ##
     for event in pygame.event.get():  # User did something
@@ -117,14 +139,17 @@ while run:
                     bg = 1
                     draw_bg(bg)
                     not_play = False
+                    lvl_one = True
                 if pygame.MOUSEBUTTONUP and two_button.rect.collidepoint(event.pos):
                     bg = 2
                     draw_bg(bg)
                     not_play = False
+                    lvl_two = True
                 if pygame.MOUSEBUTTONUP and three_button.rect.collidepoint(event.pos):
                     bg = 3
                     draw_bg(bg)
                     not_play = False
+                    lvl_level = False
                 if pygame.MOUSEBUTTONUP and four_button.rect.collidepoint(event.pos):
                     bg = 4
                     draw_bg(bg)
@@ -161,8 +186,8 @@ while run:
 
 
 
-screen.fill(('background.png'))
 if not_play:
+    screen.fill(('background.png'))
     screen.blit(display_title, (0,0))
     screen.blit(display_message, (0, 0))
     screen.blit(button_play.image, button_play.rect)
@@ -171,6 +196,11 @@ if dashboard:
     screen.blit(button_two.image, button_two.rect)
     screen.blit(button_three.image, button_three.rect)
     screen.blit(button_four.image, button_four.rect)
-
+if lvl_one:
+    screen.fill(('background.png'))
+if lvl_two:
+    screen.fill(('background.png'))
+if lvl_three
+    screen.fill(('background.png'))
 
 pygame.display.update()
