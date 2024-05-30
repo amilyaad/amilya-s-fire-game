@@ -107,7 +107,7 @@ for i in range(len(img_list)):
 # -------- Main Program Loop -----------
 while run:
 
-    while not(not_play):
+    while not not_play:
         if keys[pygame.K_RIGHT]:
             p_one.move_direction("right")
         elif keys[pygame.K_LEFT]:
@@ -178,13 +178,8 @@ while run:
                 if pygame.mouse.get_pressed()[2] == 1:
                     world_data[y][x] = -1
 
-
-
-
     pygame.display.update()
     ##  ----- NO BLIT ZONE END  ----- ##
-
-
 
 if not_play:
     screen.fill(('background.png'))
@@ -200,7 +195,7 @@ if lvl_one:
     screen.fill(('background.png'))
 if lvl_two:
     screen.fill(('background.png'))
-if lvl_three
+if lvl_three:
     screen.fill(('background.png'))
 
 pygame.display.update()
